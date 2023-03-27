@@ -4,7 +4,7 @@
 <head>
     {% block head %}
         <meta charset="utf-8" />
-        <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+        <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ config.site.title|e|e }}</title>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,13 @@
     <div class="header">
         <div class="">
             <a class="logo" href="{{ home_url|e }}">
-                {{ config.site.title|e }}
+                {% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
+                {% if logo %}
+                    {% set logo_file = (logo|first).name %}
+                    <img src="{{ url('theme://images/logo/' ~ logo_file)  }}" alt="{{ config.site.title|e }}" />
+                {% else %}
+                    <img src="{{ url('theme://images/logo.png')|e  }}" alt="{{ config.site.title|e }}" />
+                {% endif %}
             </a>
             {% block header_navigation %}
                 <nav class="main-nav">

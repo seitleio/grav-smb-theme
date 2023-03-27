@@ -67,7 +67,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update && apt-get upgrade -y
     apt-get install -y apache2 php7.4 libapache2-mod-php7.4 curl php-curl php-dom php-gd php-xml php-zip wget unzip php-mbstring
-    
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    nvm install node
+
     a2enmod rewrite
     a2dissite 000-default.conf
     cat <<- 'EOF' >/etc/apache2/sites-available/000-default.conf
@@ -94,8 +98,6 @@ EOF
     php bin/gpm install -q admin
     php bin/gpm install -q devtools
 
-    ln -s /vagrant /var/www/html/user/themes/smb-theme
-
     cat <<- 'EOF' >/var/www/html/user/accounts/vagrant.yml
 state: enabled
 email: admin@example.com
@@ -110,6 +112,8 @@ access:
 hashed_password: $2y$10$l1ZVHgiDbOMMG7isMeI4.Oi3tfttGlRKxvDg9mxRnaHSlfCzp1dXS
 EOF
 
+    ln -s /vagrant /var/www/html/user/themes/smb-theme
+    usermod -aG vagrant www-data
     chown -R 33:33 /var/www/html
   SHELL
 end
