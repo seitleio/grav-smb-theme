@@ -16,10 +16,11 @@
 
     {% block stylesheets %}
         {% do assets.addCss('theme://dist/css/site' ~ extension ~ '.css', 98) %}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
     {% endblock %}
 
     {% block javascripts %}
-	    {% do assets.addJs('theme://js/main' ~ extension ~ '.js', 98) %}
+	    {% do assets.addJs('theme://js/main' ~ extension ~ '.js', 98) %}        
     {% endblock %}
 
     {% block assets deferred %}
@@ -31,28 +32,17 @@
 
 {% block header %}
     <div class="header">
-        <div class="">
-            <a class="logo" href="{{ home_url|e }}">
-                {% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
-                {% if logo %}
-                    {% set logo_file = (logo|first).name %}
-                    <img src="{{ url('theme://images/logo/' ~ logo_file)  }}" alt="{{ config.site.title|e }}" />
-                {% else %}
-                    <img src="{{ url('theme://images/logo.png')|e  }}" alt="{{ config.site.title|e }}" />
-                {% endif %}
-            </a>
-            {% block header_navigation %}
-                <nav class="main-nav">
-                    {% include 'partials/navigation.html.twig' %}
-                </nav>
-            {% endblock %}
-        </div>
+        {% block header_navigation %}
+            <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+                {% include 'partials/navigation.html.twig' %}
+            </nav>
+        {% endblock %}
     </div>
 {% endblock %}
 
 {% block body %}
-    <section id="body">
-        <div class="prose">
+    <section id="body">        
+        <div class="prose container mx-auto max-w-4xl">
             {% block content %}{% endblock %}
         </div>
     </section>
@@ -68,7 +58,7 @@
 
 {% block bottom %}
     {{ assets.js('bottom')|raw }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 {% endblock %}
-
 </body>
 </html>

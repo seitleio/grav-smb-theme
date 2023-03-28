@@ -10,7 +10,7 @@ module.exports = {
     './smb-theme.php'
   ],
   darkMode: 'class', //false or 'media' or 'class'
-  theme: {},
+  theme: { },
   variants: {
     extend: {}
   },
