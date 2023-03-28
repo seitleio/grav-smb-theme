@@ -1,0 +1,19 @@
+---
+version: "3.6"
+services:
+  grav:
+    image: lscr.io/linuxserver/grav:latest
+    container_name: grav
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    ports:
+      - 8080:80
+    restart: unless-stopped
+    volumes:
+      - .:/config/www/user/themes/smb-theme
+      - appdata:/config
+
+volumes:
+  appdata:
