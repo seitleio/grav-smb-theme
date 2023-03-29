@@ -9,7 +9,7 @@ module.exports = {
     './smb-theme.yaml',
     './smb-theme.php'
   ],
-  darkMode: 'class', //false or 'media' or 'class'
+  darkMode: 'media', //false or 'media' or 'class'
   theme: { },
   variants: {
     extend: {}

@@ -28,12 +28,12 @@
     {{ assets.js()|raw }}
     {% endblock %}
 </head>
-<body id="top" class="{{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }}">
+<body id="top" class="{{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }} bg-white dark:bg-gray-700">
 
 {% block header %}
     <div class="header">
         {% block header_navigation %}
-            <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+            <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
                 {% include 'partials/navigation.html.twig' %}
             </nav>
         {% endblock %}
@@ -42,7 +42,7 @@
 
 {% block body %}
     <section id="body">        
-        <div class="prose container mx-auto max-w-4xl">
+        <div class="prose dark:prose-invert container mx-auto max-w-4xl pr-4 pl-4 pt-5">
             {% block content %}{% endblock %}
         </div>
     </section>
