@@ -1,6 +1,6 @@
 {% macro loop(page) %}
-    {% set active_page_classes = "text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" %}
-    {% set page_classes = "text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" %}
+    {% set active_page_classes = "text-violet rounded dark:text-violet" %}
+    {% set page_classes = "text-spacecadet-700 rounded dark:text-spacecadet-400 dark:hover:text-violet" %}
 
     {% for p in page.children.visible %}
         {% set classes = (p.active or p.activeChild) ? active_page_classes : page_classes %}
@@ -11,8 +11,8 @@
                     {{ p.menu|e }} <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </button>
                 <!-- Dropdown menu -->
-                <div id="{{ p.slug() }}-dropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                <div id="{{ p.slug() }}-dropdown" class="z-10 hidden font-normal bg-white divide-y divide-spacecadet-100 rounded-lg shadow w-44 dark:bg-spacecadet-700 dark:divide-spacecadet-600">
+                    <ul class="py-2 text-sm text-spacecadet-700 dark:text-spacecadet-400" aria-labelledby="dropdownLargeButton">
                         {{ _self.loop(p) }}
                     </ul>
                 </div>
@@ -35,7 +35,7 @@
     {% endfor %}
 {% endmacro %}
 
-<nav class="px-2 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+<nav class="px-2 bg-white border-spacecadet-200 dark:bg-spacecadet-900 dark:border-spacecadet-700">
   <div class="container flex flex-wrap items-center justify-between mx-auto max-w-4xl">
     <a href="{{ home_url|e }}" class="flex items-center">        
         {% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
@@ -47,12 +47,12 @@
         {% endif %}
         <span class="self-center text-xl whitespace-nowrap dark:text-white">{{ config.site.title|e }}</span>
     </a>
-    <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+    <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-spacecadet-500 rounded-lg md:hidden hover:bg-spacecadet-100 focus:outline-none focus:ring-2 focus:ring-spacecadet-200 dark:text-spacecadet-400 dark:hover:bg-spacecadet-700 dark:focus:ring-spacecadet-600" aria-controls="navbar-dropdown" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
       <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-      <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <ul class="flex flex-col p-4 mt-4 border border-spacecadet-100 rounded-lg bg-spacecadet-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-spacecadet-800 md:dark:bg-spacecadet-900 dark:border-spacecadet-700">
         {% if config.theme.dropdown.enabled %}
             {{ _self.loop(pages) }}
         {% else %}
