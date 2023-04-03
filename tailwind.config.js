@@ -9,7 +9,7 @@ module.exports = {
     './smb-theme.yaml',
     './smb-theme.php'
   ],
-  darkMode: 'media', //false or 'media' or 'class'
+  darkMode: 'false', //false or 'media' or 'class'
   theme: {
     colors: {
       'inherit': 'inherit',
@@ -38,9 +38,7 @@ module.exports = {
         800: '#181825',
         900: '#101019'
       },
-      'platinum': '#E2E2E2',
-      'teal': '#028090',
-      'persiangreen': '#339989'
+      'platinum': '#E2E2E2'
     }
   },
   variants: {
