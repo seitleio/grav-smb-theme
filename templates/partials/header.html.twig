@@ -1,6 +1,6 @@
 {% macro loop(page) %}
-    {% set active_page_classes = "text-violet rounded dark:text-violet" %}
-    {% set page_classes = "text-spacecadet-700 rounded dark:text-spacecadet-400 dark:hover:text-violet" %}
+    {% set active_page_classes = "text-primary rounded dark:text-primary" %}
+    {% set page_classes = "text-spacecadet-700 rounded dark:text-spacecadet-400 dark:hover:text-primary" %}
 
     {% for p in page.children.visible %}
         {% set classes = (p.active or p.activeChild) ? active_page_classes : page_classes %}
@@ -37,7 +37,7 @@
 
 <header>
     <nav class="px-2 bg-white border-spacecadet-200 dark:bg-spacecadet-900 dark:border-spacecadet-700">
-        <div class="container flex flex-wrap items-center justify-between mx-auto max-w-4xl">
+        <div class="container flex flex-wrap items-center justify-between mx-auto max-w-5xl">
             <a href="{{ home_url|e }}" class="flex items-center">        
                 {% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
                 {% if logo %}

@@ -9,12 +9,13 @@ module.exports = {
     './smb-theme.yaml',
     './smb-theme.php'
   ],
-  darkMode: 'false', //false or 'media' or 'class'
+  darkMode: 'media', //false or 'media' or 'class'
   theme: {
     colors: {
       'inherit': 'inherit',
-      'violet': '#AA87DE',
-      'white': '#FFFFFF',
+      'primary': '#AA87DE',
+      'secondary': '#414361',
+      'white': '#FDFDFF',
       'slate': {
         100: '#f1f5f9',
         200: '#e2e8f0',
@@ -35,10 +36,10 @@ module.exports = {
         500: '#626293',
         600: '#49496E',
         700: '#313149',
-        800: '#181825',
-        900: '#101019'
-      },
-      'platinum': '#E2E2E2'
+        800: '#22223B',
+        900: '#181825',
+        950: '#101019'
+      }      
     }
   },
   variants: {
